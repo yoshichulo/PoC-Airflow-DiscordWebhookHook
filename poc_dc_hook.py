@@ -38,6 +38,7 @@ class NewDiscordHook(DiscordWebhookHook):
                 'Expected Discord webhook endpoint in the form of "webhooks/{webhook.id}/{webhook.token}".'
             )
 
+        # This is the only line that changed in the original code
         return f'https://discord.com/api/{endpoint}'
 
 
@@ -68,7 +69,8 @@ with DAG(
 
     send_old_message_task = PythonOperator(
         task_id='send_old_message_task',
-        python_callable=send_old_message
+        python_callable=send_old_message,
+        trigger_rule='all_done'
     )
 
     send_new_message_task >> send_old_message_task
