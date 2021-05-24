@@ -4,7 +4,7 @@ This is a PoC to show that there is a small issue with the endpoint building on 
 
 There are 2 tasks created:
 - `send_new_message_task`: sends a Discord message using the new endpoint building on the `NewDiscordHook` class.
-- `send_old_message_task`: sends a Discord message using the new endpoint building on the current `DiscordWebhookHook` class.
+- `send_old_message_task`: sends a Discord message using the old endpoint building on the current `DiscordWebhookHook` class.
 
 The way it is right now, the first task is gonna raise an exception:
 ```
